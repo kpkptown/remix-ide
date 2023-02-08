@@ -19,28 +19,12 @@ contract Objectron1155 is ERC1155URIStorage, Ownable, Operable, ERC2981, Default
     constructor() ERC1155("") {
         _grantOperatorRole(msg.sender);
         _setDefaultRoyalty(msg.sender, 1000);
-        _setBaseURI("ipfs://QmXomJni6Kfe6YyphW4j2YpyLJ9SWRb2qouzzVRNM7TtN3/");
+        _setBaseURI("ipfs://QmRoQtYEM6wkEXmL9PGf7qwWHR8Jrzc2oBN7snTgfFAjFB/");
         initializeNFT(1, "1.json");
     }
 
-    // function setApprovalForAll(address operator, bool approved) public override onlyAllowedOperatorApproval(operator) {
-    //     super.setApprovalForAll(operator, approved);
-    // }
-
-    // すべてのトークンの移転に対する承認を設定する関数
-    function setApprovalForAll(address operator, bool approved)
-        public
-        virtual
-        override
-        onlyAllowedOperatorApproval(operator)
-    {
-        require(
-            // 承認を設定するアドレス（operator）がownerと同じ場合は許可
-            operator == owner(),
-            "Cannot approve, transferring not allowed"
-        );
-        // 承認設定を行うために、_setApprovalForAll関数を呼び出す
-        _setApprovalForAll(_msgSender(), operator, approved);
+    function setApprovalForAll(address operator, bool approved) public override onlyAllowedOperatorApproval(operator) {
+        super.setApprovalForAll(operator, approved);
     }
 
     function setBaseURI(string memory uri_) external onlyOperator {
