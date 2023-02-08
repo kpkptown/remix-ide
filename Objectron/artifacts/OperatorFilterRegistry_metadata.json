@@ -1,0 +1,1068 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "AddressAlreadyFiltered",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "filtered",
+						"type": "address"
+					}
+				],
+				"name": "AddressFiltered",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "AddressNotFiltered",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "AlreadyRegistered",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "subscription",
+						"type": "address"
+					}
+				],
+				"name": "AlreadySubscribed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CannotCopyFromSelf",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CannotFilterEOAs",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "CannotSubscribeToRegistrantWithSubscription",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CannotSubscribeToSelf",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CannotSubscribeToZeroAddress",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "subscription",
+						"type": "address"
+					}
+				],
+				"name": "CannotUpdateWhileSubscribed",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "codeHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "CodeHashAlreadyFiltered",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "codeHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "CodeHashFiltered",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "codeHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "CodeHashNotFiltered",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwnable",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "NotRegistered",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotSubscribed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "OnlyAddressOrOwner",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "codeHash",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "CodeHashUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32[]",
+						"name": "codeHashes",
+						"type": "bytes32[]"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "CodeHashesUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "OperatorUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "operators",
+						"type": "address[]"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "OperatorsUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "registered",
+						"type": "bool"
+					}
+				],
+				"name": "RegistrationUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "subscription",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "subscribed",
+						"type": "bool"
+					}
+				],
+				"name": "SubscriptionUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "a",
+						"type": "address"
+					}
+				],
+				"name": "codeHashOf",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "registrantToCopy",
+						"type": "address"
+					}
+				],
+				"name": "copyEntriesOf",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "filteredCodeHashAt",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "filteredCodeHashes",
+				"outputs": [
+					{
+						"internalType": "bytes32[]",
+						"name": "",
+						"type": "bytes32[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "filteredOperatorAt",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "filteredOperators",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "codeHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "isCodeHashFiltered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operatorWithCode",
+						"type": "address"
+					}
+				],
+				"name": "isCodeHashOfFiltered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "isOperatorAllowed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "isOperatorFiltered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "isRegistered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "register",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "registrantToCopy",
+						"type": "address"
+					}
+				],
+				"name": "registerAndCopyEntries",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "subscription",
+						"type": "address"
+					}
+				],
+				"name": "registerAndSubscribe",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "newSubscription",
+						"type": "address"
+					}
+				],
+				"name": "subscribe",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "subscriberAt",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "subscribers",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "subscriptionOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "subscription",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					}
+				],
+				"name": "unregister",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "copyExistingEntries",
+						"type": "bool"
+					}
+				],
+				"name": "unsubscribe",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "codeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "updateCodeHash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "codeHashes",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "updateCodeHashes",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "updateOperator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "registrant",
+						"type": "address"
+					},
+					{
+						"internalType": "address[]",
+						"name": "operators",
+						"type": "address[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "filtered",
+						"type": "bool"
+					}
+				],
+				"name": "updateOperators",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"codeHashOf(address)": {
+					"details": "Convenience method to compute the code hash of an arbitrary contract"
+				}
+			},
+			"stateVariables": {
+				"EOA_CODEHASH": {
+					"details": "initialized accounts have a nonzero codehash (see https://eips.ethereum.org/EIPS/eip-1052) Note that this will also be a smart contract's codehash when making calls from its constructor."
+				}
+			},
+			"title": "OperatorFilterRegistry",
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"AddressAlreadyFiltered(address)": [
+					{
+						"notice": "Emitted when trying to add an address that is already filtered."
+					}
+				],
+				"AddressFiltered(address)": [
+					{
+						"notice": "Emitted when an address is filtered."
+					}
+				],
+				"AddressNotFiltered(address)": [
+					{
+						"notice": "Emitted when trying to remove an address that is not filtered."
+					}
+				],
+				"AlreadyRegistered()": [
+					{
+						"notice": "Emitted when the registrant is already registered."
+					}
+				],
+				"AlreadySubscribed(address)": [
+					{
+						"notice": "Emitted when the registrant is already subscribed."
+					}
+				],
+				"CannotCopyFromSelf()": [
+					{
+						"notice": "Emitted when trying to copy a registration from itself."
+					}
+				],
+				"CannotFilterEOAs()": [
+					{
+						"notice": "Emitted when trying to register an address that has no code."
+					}
+				],
+				"CannotSubscribeToRegistrantWithSubscription(address)": [
+					{
+						"notice": "Emited when trying to register to a registrant with a subscription."
+					}
+				],
+				"CannotSubscribeToSelf()": [
+					{
+						"notice": "Emitted when trying to subscribe to itself."
+					}
+				],
+				"CannotSubscribeToZeroAddress()": [
+					{
+						"notice": "Emitted when trying to subscribe to the zero address."
+					}
+				],
+				"CannotUpdateWhileSubscribed(address)": [
+					{
+						"notice": "Emitted when trying to update a registration where the registrant is already subscribed."
+					}
+				],
+				"CodeHashAlreadyFiltered(bytes32)": [
+					{
+						"notice": "Emitted when trying to add a codehash that is already filtered."
+					}
+				],
+				"CodeHashFiltered(address,bytes32)": [
+					{
+						"notice": "Emitted when a codeHash is filtered."
+					}
+				],
+				"CodeHashNotFiltered(bytes32)": [
+					{
+						"notice": "Emitted when trying to remove a codehash that is not filtered."
+					}
+				],
+				"NotOwnable()": [
+					{
+						"notice": "Emitted when trying to register and the contract is not ownable (EIP-173 \"owner()\")"
+					}
+				],
+				"NotRegistered(address)": [
+					{
+						"notice": "Emitted when the registrant is not registered."
+					}
+				],
+				"NotSubscribed()": [
+					{
+						"notice": "Emitted when the registrant is not subscribed."
+					}
+				],
+				"OnlyAddressOrOwner()": [
+					{
+						"notice": "Emitted when the caller is not the address or EIP-173 \"owner()\""
+					}
+				]
+			},
+			"events": {
+				"CodeHashUpdated(address,bytes32,bool)": {
+					"notice": "Emitted when a codeHash is updated."
+				},
+				"CodeHashesUpdated(address,bytes32[],bool)": {
+					"notice": "Emitted when multiple codeHashes are updated."
+				},
+				"OperatorUpdated(address,address,bool)": {
+					"notice": "Emitted when an operator is updated."
+				},
+				"OperatorsUpdated(address,address[],bool)": {
+					"notice": "Emitted when multiple operators are updated."
+				},
+				"RegistrationUpdated(address,bool)": {
+					"notice": "Emitted when a registration is updated."
+				},
+				"SubscriptionUpdated(address,address,bool)": {
+					"notice": "Emitted when a subscription is updated."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"copyEntriesOf(address,address)": {
+					"notice": "Copy filtered operators and codeHashes from a different registrantToCopy to addr."
+				},
+				"filteredCodeHashAt(address,uint256)": {
+					"notice": "Returns the filtered codeHash at the given index of the list of filtered codeHashes for a given address or         its subscription.         Note that order is not guaranteed as updates are made."
+				},
+				"filteredCodeHashes(address)": {
+					"notice": "Returns the set of filtered codeHashes for a given address or its subscription.         Note that order is not guaranteed as updates are made."
+				},
+				"filteredOperatorAt(address,uint256)": {
+					"notice": "Returns the filtered operator at the given index of the set of filtered operators for a given address or         its subscription.         Note that order is not guaranteed as updates are made."
+				},
+				"filteredOperators(address)": {
+					"notice": "Returns a list of filtered operators for a given address or its subscription."
+				},
+				"isCodeHashFiltered(address,bytes32)": {
+					"notice": "Returns true if a codeHash is filtered by a given address or its subscription."
+				},
+				"isCodeHashOfFiltered(address,address)": {
+					"notice": "Returns true if the hash of an address's code is filtered by a given address or its subscription."
+				},
+				"isOperatorAllowed(address,address)": {
+					"notice": "Returns true if operator is not filtered for a given token, either by address or codeHash. Also returns         true if supplied registrant address is not registered.         Note that this method will *revert* if an operator or its codehash is filtered with an error that is         more informational than a false boolean, so smart contracts that query this method for informational         purposes will need to wrap in a try/catch or perform a low-level staticcall in order to handle the case         that an operator is filtered."
+				},
+				"isOperatorFiltered(address,address)": {
+					"notice": "Returns true if operator is filtered by a given address or its subscription."
+				},
+				"isRegistered(address)": {
+					"notice": "Returns true if an address has registered"
+				},
+				"register(address)": {
+					"notice": "Registers an address with the registry. May be called by address itself or by EIP-173 owner."
+				},
+				"registerAndCopyEntries(address,address)": {
+					"notice": "Registers an address with the registry and copies the filtered operators and codeHashes from another         address without subscribing."
+				},
+				"registerAndSubscribe(address,address)": {
+					"notice": "Registers an address with the registry and \"subscribes\" to another address's filtered operators and codeHashes."
+				},
+				"subscribe(address,address)": {
+					"notice": "Subscribe an address to another registrant's filtered operators and codeHashes. Will remove previous         subscription if present.         Note that accounts with subscriptions may go on to subscribe to other accounts - in this case,         subscriptions will not be forwarded. Instead the former subscription's existing entries will still be         used."
+				},
+				"subscriberAt(address,uint256)": {
+					"notice": "Get the subscriber at a given index in the set of addresses subscribed to a given registrant.         Note that order is not guaranteed as updates are made."
+				},
+				"subscribers(address)": {
+					"notice": "Get the set of addresses subscribed to a given registrant.         Note that order is not guaranteed as updates are made."
+				},
+				"subscriptionOf(address)": {
+					"notice": "Get the subscription address of a given registrant, if any."
+				},
+				"unregister(address)": {
+					"notice": "Unregisters an address with the registry and removes its subscription. May be called by address itself or by EIP-173 owner.         Note that this does not remove any filtered addresses or codeHashes.         Also note that any subscriptions to this registrant will still be active and follow the existing filtered addresses and codehashes."
+				},
+				"unsubscribe(address,bool)": {
+					"notice": "Unsubscribe an address from its current subscribed registrant, and optionally copy its filtered operators and codeHashes."
+				},
+				"updateCodeHash(address,bytes32,bool)": {
+					"notice": "Update a codeHash for a registered address - when filtered is true, the codeHash is filtered.         Note that this will allow adding the bytes32(0) codehash, which could result in unexpected behavior,         since calling `isCodeHashFiltered` will return true for bytes32(0), which is the codeHash of any         un-initialized account. Since un-initialized accounts have no code, the registry will not validate         that an un-initalized account's codeHash is not filtered. By the time an account is able to         act as an operator (an account is initialized or a smart contract exclusively in the context of its         constructor),  it will have a codeHash of EOA_CODEHASH, which cannot be filtered."
+				},
+				"updateCodeHashes(address,bytes32[],bool)": {
+					"notice": "Update multiple codeHashes for a registered address - when filtered is true, the codeHashes will be filtered. Reverts on duplicates.         Note that this will allow adding the bytes32(0) codehash, which could result in unexpected behavior,         since calling `isCodeHashFiltered` will return true for bytes32(0), which is the codeHash of any         un-initialized account. Since un-initialized accounts have no code, the registry will not validate         that an un-initalized account's codeHash is not filtered. By the time an account is able to         act as an operator (an account is initialized or a smart contract exclusively in the context of its         constructor),  it will have a codeHash of EOA_CODEHASH, which cannot be filtered."
+				},
+				"updateOperator(address,address,bool)": {
+					"notice": "Update an operator address for a registered address - when filtered is true, the operator is filtered."
+				},
+				"updateOperators(address,address[],bool)": {
+					"notice": "Update multiple operators for a registered address - when filtered is true, the operators will be filtered. Reverts on duplicates."
+				}
+			},
+			"notice": "Borrows heavily from the QQL BlacklistOperatorFilter contract:         https://github.com/qql-art/contracts/blob/main/contracts/BlacklistOperatorFilter.solThis contracts allows tokens or token owners to register specific addresses or codeHashes that may be *       restricted according to the isOperatorAllowed function.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Objectron/OperatorFilterRegistry.sol": "OperatorFilterRegistry"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2",
+				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
+				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"@openzeppelin/contracts/utils/structs/EnumerableSet.sol": {
+			"keccak256": "0xc3ff3f5c4584e1d9a483ad7ced51ab64523201f4e3d3c65293e4ca8aeb77a961",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d7d3dd6067a994690471b5fc71b6f81fac3847798b37d404f74db00b4d3c3d0e",
+				"dweb:/ipfs/QmRHF1RarifjNi93RttouNPkYZGyu6CD926PgRDzD5iL35"
+			]
+		},
+		"Objectron/IOperatorFilterRegistry.sol": {
+			"keccak256": "0x56ad8df389958dbf89cc30196e5f37779ee87d2e8b551d84a8d0a696e1c69937",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7ca12c8b2d8a6c0ef1ba2204be8628c1443d9371c37aa619a3cc485267b6a30c",
+				"dweb:/ipfs/QmaKXZeCR6kPRXCYo6NZJFnbBEa4eWwBKRYAKyY87vBrtc"
+			]
+		},
+		"Objectron/OperatorFilterRegistry.sol": {
+			"keccak256": "0xd40554a3a2b7bfb7d669a9ad806d1bcc57f0a9471efbd61a20ca7db64a487898",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://44363a49b7f490e211931dd97d691f1fa69564951233abfd74959398b3aa7adb",
+				"dweb:/ipfs/QmTikfJZC8fRQhJwxiTUZ3MzofT9C8St2V5uRvphjDAFCt"
+			]
+		},
+		"Objectron/OperatorFilterRegistryErrorsAndEvents.sol": {
+			"keccak256": "0x5db1088914dc70473b71f1156a791887896e3601f47f2ef7be326af477d81675",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2f8825b56bd0b95031239d40edae5d5d084010181e2d08e85afe63cdeee5d10a",
+				"dweb:/ipfs/QmUd3UZe7MAo2MCFzXYk9Ddu8GLhzF2Uv2aWB2D2VZoB8Z"
+			]
+		}
+	},
+	"version": 1
+}
