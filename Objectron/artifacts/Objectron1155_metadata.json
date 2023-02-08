@@ -741,7 +741,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Objectron/Objectron-1155.sol": "Objectron1155"
+			"Objectron/Objectron1155.sol": "Objectron1155"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -883,12 +883,12 @@
 				"dweb:/ipfs/QmaKXZeCR6kPRXCYo6NZJFnbBEa4eWwBKRYAKyY87vBrtc"
 			]
 		},
-		"Objectron/Objectron-1155.sol": {
-			"keccak256": "0x27d8e5387b925175243a4fc28dd037cb0a2085472cf8f00fc4a16e82ff9238e2",
+		"Objectron/Objectron1155.sol": {
+			"keccak256": "0x0b0f62fd2ee34bf44ae0551de24983d1c4a0c84ef637c53e6c214b99ff668a0c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c62923ebc23fb715220c2fd0ffa51a051d03f6d146f731f7fdba0430cb28ebf7",
-				"dweb:/ipfs/QmP1dNYKn9jPyPi568oeScmoX1FxAmW3PXMN6dMhSEFdGs"
+				"bzz-raw://431f95016de0d6cd9e6d2a3a1efcf02cf335786ff673196b701c367281e8ee0c",
+				"dweb:/ipfs/QmahyF8k7sfUyd7rGAjEvUqxfn3D6fS6itBvSiYzHxd5vk"
 			]
 		},
 		"Objectron/Operable.sol": {
