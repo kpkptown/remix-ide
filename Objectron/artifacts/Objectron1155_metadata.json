@@ -266,13 +266,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "deleteDefaultRoyalty",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -405,19 +398,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "resetTokenRoyalty",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "_candidate",
 						"type": "address"
@@ -426,35 +406,6 @@
 				"name": "revokeOperatorRole",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_salePrice",
-						"type": "uint256"
-					}
-				],
-				"name": "royaltyInfo",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -550,47 +501,6 @@
 					}
 				],
 				"name": "setBaseURI",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "receiver",
-						"type": "address"
-					},
-					{
-						"internalType": "uint96",
-						"name": "feeNumerator",
-						"type": "uint96"
-					}
-				],
-				"name": "setDefaultRoyalty",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "receiver",
-						"type": "address"
-					},
-					{
-						"internalType": "uint96",
-						"name": "feeNumerator",
-						"type": "uint96"
-					}
-				],
-				"name": "setTokenRoyalty",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -712,17 +622,14 @@
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
 				},
-				"royaltyInfo(uint256,uint256)": {
-					"details": "Returns how much royalty is owed and to whom, based on a sale price that may be denominated in any unit of exchange. The royalty amount is denominated and should be paid in that same unit of exchange."
-				},
 				"safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)": {
 					"details": "See {IERC1155-safeBatchTransferFrom}."
 				},
 				"setApprovalForAll(address,bool)": {
 					"details": "See {IERC1155-setApprovalForAll}."
 				},
-				"setDefaultRoyalty(address,uint96)": {
-					"details": "Setting Royalties"
+				"supportsInterface(bytes4)": {
+					"details": "See {IERC165-supportsInterface}."
 				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
@@ -741,7 +648,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Objectron/Objectron1155.sol": "Objectron1155"
+			"Objectron/test2.sol": "Objectron1155"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -761,14 +668,6 @@
 			"urls": [
 				"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2",
 				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
-			]
-		},
-		"@openzeppelin/contracts/interfaces/IERC2981.sol": {
-			"keccak256": "0xa812eed728198acd2c30d06950a5bea8d68436e4f694dd892273266ec2f79f5b",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://f5522afc5c222c810d9ad67c45f37cb7169452fcf76692cad10ac8153c068daa",
-				"dweb:/ipfs/QmX4XgnDp7pyvojQ6g5tacrUMCf7TED2qC2vERH9Xh9feZ"
 			]
 		},
 		"@openzeppelin/contracts/token/ERC1155/ERC1155.sol": {
@@ -809,14 +708,6 @@
 			"urls": [
 				"bzz-raw://e46c80ea068989111d6103e5521223f9ef337e93de76deed8b03f75c6f7b2797",
 				"dweb:/ipfs/QmNoSE6knNfFncdDDLTb3fGR6oSQty1srG96Vsx3E9wQdw"
-			]
-		},
-		"@openzeppelin/contracts/token/common/ERC2981.sol": {
-			"keccak256": "0x9bc4d7eb03c4e87fd5122e03cdff5f60fa360d76925980ad022b2c6fac9876f3",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://9c6d7cfaac6b54599068126b75474c86ccbbaf386c3581abf82d9cda21b35c81",
-				"dweb:/ipfs/QmPZteoCvkiUgv4TZxv2wiEKR5KqM83UCohHnSGw1RytpM"
 			]
 		},
 		"@openzeppelin/contracts/utils/Address.sol": {
@@ -883,14 +774,6 @@
 				"dweb:/ipfs/QmaKXZeCR6kPRXCYo6NZJFnbBEa4eWwBKRYAKyY87vBrtc"
 			]
 		},
-		"Objectron/Objectron1155.sol": {
-			"keccak256": "0x0b0f62fd2ee34bf44ae0551de24983d1c4a0c84ef637c53e6c214b99ff668a0c",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://431f95016de0d6cd9e6d2a3a1efcf02cf335786ff673196b701c367281e8ee0c",
-				"dweb:/ipfs/QmahyF8k7sfUyd7rGAjEvUqxfn3D6fS6itBvSiYzHxd5vk"
-			]
-		},
 		"Objectron/Operable.sol": {
 			"keccak256": "0x3b2c4885adce11b9c169d38532dbb68ea3aae3d0c94081c56945512ef3b6a36a",
 			"license": "MIT",
@@ -913,6 +796,14 @@
 			"urls": [
 				"bzz-raw://71d0b1ac75a8bfb054d13415b01a32fdee313975ef154ed21e8e49ef92a1b308",
 				"dweb:/ipfs/QmTMjZne7RgUGLjkB5RfyZwuny2Qw1AmznYuHQJp5rePdu"
+			]
+		},
+		"Objectron/test2.sol": {
+			"keccak256": "0x17a9ed03beb3c5f93460a21340222de27ec941a1d74a03a4bff2f9ccd4c54003",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ce6edcf80fc25873ca77d30f0ce64dc7ac89d620c01193fb0e2655003dd8a7a",
+				"dweb:/ipfs/QmPvG5icS9p4WXgETLnuBHXgauuAbojrkwisfJe4UbPEP4"
 			]
 		}
 	},
