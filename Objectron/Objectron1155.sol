@@ -18,9 +18,20 @@ contract Objectron1155 is  DefaultOperatorFilterer, Ownable, Operable, ERC2981, 
 
     constructor() ERC1155("") {
         _grantOperatorRole(msg.sender);
-        _setDefaultRoyalty(msg.sender, 1000);
-        _setBaseURI("ipfs://QmRoQtYEM6wkEXmL9PGf7qwWHR8Jrzc2oBN7snTgfFAjFB/");
+        // _setDefaultRoyalty(msg.sender, 1000);
+        _setBaseURI("ipfs://QmZX1zSqmFFjpzyA2Ls8R62bnDkqu2oSdyfPYcGBReNurF/");
         initializeNFT(1, "1.json");
+    }
+
+    /**
+     *  @dev Withdraw
+     */
+
+    address public constant withdrawAddress = 0x7B3391d586808329F218cBAe72E50941f697FECE; 
+
+    function withdraw() public onlyOwner {
+        (bool os, ) = payable(withdrawAddress).call{value: address(this).balance}('');
+        require(os);
     }
 
     function setApprovalForAll(address operator, bool approved) public override onlyAllowedOperatorApproval(operator) {
@@ -54,7 +65,7 @@ contract Objectron1155 is  DefaultOperatorFilterer, Ownable, Operable, ERC2981, 
         address to,
         uint256 id,
         uint256 amount
-    ) public onlyOperator {
+    ) public payable onlyOperator {
         require(bytes(uri(id)).length != 0, "Not initialized");
         _mint(to, id, amount, "");
     }
@@ -63,7 +74,7 @@ contract Objectron1155 is  DefaultOperatorFilterer, Ownable, Operable, ERC2981, 
         address[] memory list,
         uint256 id,
         uint256[] memory amount
-    ) public onlyOperator {
+    ) public payable onlyOperator {
         for (uint256 i = 0; i < list.length; i++) {
             _mint(list[i], id, amount[i], "");
         }
@@ -98,30 +109,8 @@ contract Objectron1155 is  DefaultOperatorFilterer, Ownable, Operable, ERC2981, 
         super.safeBatchTransferFrom(from, to, ids, amounts, data);
     }
 
-    // function supportsInterface(bytes4 interfaceId) public view virtual override(ERC2981, ERC1155) returns (bool) {
-    //     return 
-    //         // interfaceId == type(ERC1155).interfaceId ||
-    //         // interfaceId == type(ERC1155URIStorage).interfaceId ||
-    //         // interfaceId == type(ERC2981).interfaceId ||
-    //         Objectron1155.supportsInterface(interfaceId);
-    // }
-
-    // function supportsInterface(bytes4 interfaceId) public view virtual override(ERC2981, ERC1155) returns (bool) {
-    //     return ERC165.supportsInterface(interfaceId);
-    // }
-
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC2981, ERC1155) returns (bool) {
-        if (
-            interfaceId == 0x780e9d63 ||
-            interfaceId == 0x20b4c838 ||
-            interfaceId == 0x9a20463a ||
-            interfaceId == 0x01ffc9a7
-        )
-        return true;
-            // interfaceId == type(IERC1155).interfaceId ||
-            // interfaceId == type(ERC1155URIStorage).interfaceId ||
-            // interfaceId == type(ERC2981).interfaceId ||
-            // super.supportsInterface(interfaceId);
+        return ERC165.supportsInterface(interfaceId);
     }
 
     /**
@@ -142,7 +131,7 @@ contract Objectron1155 is  DefaultOperatorFilterer, Ownable, Operable, ERC2981, 
      */
 
     function setDefaultRoyalty(address receiver, uint96 feeNumerator) external onlyOwner { 
-        _setDefaultRoyalty( receiver, feeNumerator ); 
+        _setDefaultRoyalty(receiver, feeNumerator); 
     }
 
     function deleteDefaultRoyalty() external onlyOwner {
@@ -150,10 +139,10 @@ contract Objectron1155 is  DefaultOperatorFilterer, Ownable, Operable, ERC2981, 
     }
 
     function setTokenRoyalty(uint256 tokenId, address receiver, uint96 feeNumerator) external onlyOwner { 
-        _setTokenRoyalty( tokenId, receiver, feeNumerator ); 
+        _setTokenRoyalty(tokenId, receiver, feeNumerator); 
     }
 
     function resetTokenRoyalty(uint256 tokenId) external onlyOwner {
-        _resetTokenRoyalty( tokenId );
+        _resetTokenRoyalty(tokenId);
     }
 }
